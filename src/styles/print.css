@@ -1,0 +1,127 @@
+@page {
+  size: A4;
+  margin: 11mm 13mm;
+}
+
+@media print {
+  :root,
+  html,
+  html[data-theme='dark'],
+  html[data-theme='light'] {
+    color-scheme: light !important;
+    --bg-canvas: #ffffff !important;
+    --bg-surface: #f5f6f8 !important;
+    --bg-elevated: #ffffff !important;
+
+    --text-primary: #0f1115 !important;
+    --text-secondary: #272c35 !important;
+    --text-muted: #4b5563 !important;
+
+    --border-hairline: #d4d8df !important;
+    --border-strong: #9ca3af !important;
+
+    --accent-primary: #111315 !important;
+    --accent-hover: #111315 !important;
+    --accent-subtle: #f3f4f6 !important;
+    --accent-text: #111315 !important;
+  }
+
+  html,
+  body {
+    background-color: #ffffff !important;
+    color: #0f1115 !important;
+    font-size: 9.5pt !important;
+    line-height: 1.45 !important;
+    min-block-size: auto !important;
+  }
+
+  html[lang='th'] body {
+    line-height: 1.52 !important;
+  }
+
+  .no-print,
+  .csr-only,
+  .skip-link,
+  [data-copy-button],
+  [data-print-trigger],
+  [data-theme-toggle] {
+    display: none !important;
+  }
+
+  .print-only {
+    display: inline !important;
+  }
+
+  /* Ensure all statically rendered projects appear in print even if filtered on screen */
+  [data-project-card][hidden] {
+    display: grid !important;
+  }
+
+  .container {
+    max-inline-size: none !important;
+    padding-inline: 0 !important;
+  }
+
+  .cv-main {
+    padding-block-start: 0 !important;
+    padding-block-end: 0 !important;
+  }
+
+  .cv-section {
+    margin-block-start: 1rem !important;
+    padding-block-start: 0.75rem !important;
+    scroll-margin-top: 0 !important;
+  }
+
+  .cv-section-header {
+    margin-block-end: 0.65rem !important;
+  }
+
+  .cv-entries {
+    gap: 0.85rem !important;
+  }
+
+  .cv-entry {
+    grid-template-columns: 11.2rem minmax(0, 1fr) !important;
+    gap: 1rem !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .cv-entry-title {
+    font-size: 10.5pt !important;
+  }
+
+  .tag-list {
+    margin-block-start: 0.4rem !important;
+    gap: 0.25rem !important;
+  }
+
+  .tag {
+    background-color: #ffffff !important;
+    border-color: #d4d8df !important;
+    padding-block: 0.08rem !important;
+    padding-inline: 0.35rem !important;
+    font-size: 7.75pt !important;
+  }
+
+  .inline-link {
+    text-decoration: none !important;
+    color: #0f1115 !important;
+  }
+
+  .print-url {
+    display: inline !important;
+    font-family: var(--font-mono);
+    font-size: 8pt;
+    color: #374151 !important;
+    word-break: break-all;
+  }
+}

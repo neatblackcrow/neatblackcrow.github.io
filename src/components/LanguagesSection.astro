@@ -1,0 +1,66 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { Locale } from '../i18n/config';
+import { getUi } from '../i18n/utils';
+
+interface Props {
+  items: CollectionEntry<'cv'>['data']['languages'];
+  locale: Locale;
+}
+
+const { items, locale } = Astro.props;
+const ui = getUi(locale);
+---
+
+<section id="languages" class="cv-section" aria-labelledby="heading-languages">
+  <div class="cv-section-header">
+    <h2 id="heading-languages" class="cv-section-title">{ui.sections.languages}</h2>
+  </div>
+
+  <div class="languages-list">
+    {
+      items.map((item) => (
+        <article class="cv-entry language-item">
+          <div class="cv-entry-meta">
+            <h3 class="language-name">{item.name}</h3>
+          </div>
+          <div class="cv-entry-body language-detail">
+            <span>{item.proficiency}</span>
+            {item.credentials && (
+              <span class="language-credentials tabular-nums">{item.credentials}</span>
+            )}
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .languages-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .language-name {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .language-detail {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-2) var(--space-3);
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+  }
+
+  .language-credentials {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+  }
+</style>

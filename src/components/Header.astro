@@ -1,0 +1,305 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { Locale } from '../i18n/config';
+import { getUi } from '../i18n/utils';
+
+interface Props {
+  profile: CollectionEntry<'cv'>['data']['profile'];
+  locale: Locale;
+}
+
+const { profile, locale } = Astro.props;
+const ui = getUi(locale);
+---
+
+<header class="cv-header">
+  <div class="shell-eyebrow no-print" aria-hidden="true">
+    <span class="shell-command">
+      <span class="shell-sigil">$</span>
+      <span>{profile.shellCommand}</span>
+      <span class="shell-cursor"></span>
+    </span>
+    <span class="shell-host">{profile.shellHost}</span>
+  </div>
+
+  <div class="header-body">
+    <div class="identity-block">
+      <h1 class="candidate-name">{profile.name}</h1>
+      <p class="candidate-headline">{profile.headline}</p>
+      <p class="candidate-location">{profile.location}</p>
+      {profile.streetAddress && <p class="candidate-address">{profile.streetAddress}</p>}
+    </div>
+
+    <ul class="contact-list">
+      <li class="contact-item">
+        <span class="contact-label">{ui.labels.email}</span>
+        <span class="contact-value-wrap">
+          <a class="inline-link" href={`mailto:${profile.email}`}>
+            {profile.email}
+          </a>
+          <button
+            type="button"
+            class="copy-btn no-print"
+            data-copy-button
+            data-copy-value={profile.email}
+            data-copied-label={ui.actions.copied}
+            data-failed-label={ui.actions.copyFailed}
+            aria-label={`${ui.actions.copyPrefix} ${profile.email}`}
+          >
+            {ui.actions.copyPrefix}
+          </button>
+        </span>
+      </li>
+
+      <li class="contact-item">
+        <span class="contact-label">{ui.labels.phone}</span>
+        <span class="contact-value-wrap">
+          <a class="inline-link tabular-nums" href={profile.phoneHref}>
+            {profile.phone}
+          </a>
+          <button
+            type="button"
+            class="copy-btn no-print"
+            data-copy-button
+            data-copy-value={profile.phone}
+            data-copied-label={ui.actions.copied}
+            data-failed-label={ui.actions.copyFailed}
+            aria-label={`${ui.actions.copyPrefix} ${profile.phone}`}
+          >
+            {ui.actions.copyPrefix}
+          </button>
+        </span>
+      </li>
+
+      <li class="contact-item">
+        <span class="contact-label">{ui.labels.github}</span>
+        <span class="contact-value-wrap">
+          <a
+            class="inline-link"
+            href={profile.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {profile.githubHandle}
+          </a>
+        </span>
+      </li>
+
+      {
+        profile.linkedinUrl && (
+          <li class="contact-item">
+            <span class="contact-label">{ui.labels.linkedin}</span>
+            <span class="contact-value-wrap">
+              <a
+                class="inline-link"
+                href={profile.linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {profile.linkedinUrl.replace(/^https?:\/\//, '')}
+              </a>
+            </span>
+          </li>
+        )
+      }
+
+      {
+        profile.websiteUrl && (
+          <li class="contact-item">
+            <span class="contact-label">{ui.labels.website}</span>
+            <span class="contact-value-wrap">
+              <a
+                class="inline-link"
+                href={profile.websiteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {profile.websiteUrl.replace(/^https?:\/\//, '')}
+              </a>
+            </span>
+          </li>
+        )
+      }
+    </ul>
+  </div>
+
+  <span class="sr-only" aria-live="polite" data-copy-status></span>
+</header>
+
+<style>
+  .cv-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .shell-eyebrow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding-block: 0.375rem;
+    padding-inline: var(--space-3);
+    border: 1px solid var(--border-hairline);
+    border-radius: var(--radius-sm);
+    background-color: var(--bg-surface);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+  }
+
+  .shell-command {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--text-secondary);
+    min-inline-size: 0;
+  }
+
+  .shell-sigil {
+    color: var(--accent-primary);
+    font-weight: 500;
+  }
+
+  .shell-cursor {
+    display: inline-block;
+    inline-size: 0.45em;
+    block-size: 1em;
+    background-color: var(--accent-primary);
+    opacity: 0.75;
+    animation: shell-blink 1.5s steps(1) infinite;
+  }
+
+  .shell-host {
+    display: none;
+    color: var(--text-muted);
+  }
+
+  @keyframes shell-blink {
+    0%,
+    55% {
+      opacity: 0.75;
+    }
+    56%,
+    100% {
+      opacity: 0.15;
+    }
+  }
+
+  .header-body {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    align-items: start;
+  }
+
+  .candidate-name {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    line-height: var(--leading-tight);
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+  }
+
+  .candidate-headline {
+    margin-block-start: var(--space-2);
+    font-size: var(--text-md);
+    font-weight: 500;
+    color: var(--text-secondary);
+    line-height: var(--leading-snug);
+  }
+
+  .candidate-location,
+  .candidate-address {
+    margin-block-start: var(--space-1);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
+
+  .contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+  }
+
+  .contact-item {
+    display: grid;
+    grid-template-columns: 4.75rem minmax(0, 1fr);
+    gap: var(--space-2);
+    align-items: baseline;
+  }
+
+  .contact-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+  }
+
+  .contact-value-wrap {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    min-inline-size: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .copy-btn {
+    display: inline-flex;
+    align-items: center;
+    padding-block: 0.12rem;
+    padding-inline: 0.45rem;
+    border: 1px solid var(--border-hairline);
+    border-radius: var(--radius-sm);
+    background-color: var(--bg-surface);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    line-height: 1.4;
+    color: var(--text-muted);
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+
+  .copy-btn:hover {
+    border-color: var(--border-strong);
+    color: var(--text-primary);
+  }
+
+  .copy-btn[data-copied='true'] {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+  }
+
+  @media (min-width: 480px) {
+    .shell-host {
+      display: inline;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .header-body {
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+      gap: var(--space-6);
+    }
+  }
+
+  @media print {
+    .header-body {
+      grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+      gap: 1.25rem;
+    }
+
+    .candidate-name {
+      font-size: 19pt;
+    }
+
+    .candidate-headline {
+      font-size: 10.5pt;
+    }
+
+    .contact-item {
+      grid-template-columns: 4rem minmax(0, 1fr);
+      font-size: 8.75pt;
+    }
+  }
+</style>

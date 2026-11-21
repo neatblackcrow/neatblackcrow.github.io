@@ -1,0 +1,65 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { SectionId } from '../domain/cv.ts';
+import { toSkillTags } from '../domain/filter.ts';
+import type { Locale } from '../i18n/config';
+import { getUi } from '../i18n/utils';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import UtilityBar from './UtilityBar.astro';
+import Header from './Header.astro';
+import ExperienceSection from './ExperienceSection.astro';
+import ProjectsSection from './ProjectsSection.astro';
+import SkillsSection from './SkillsSection.astro';
+import EducationSection from './EducationSection.astro';
+import LanguagesSection from './LanguagesSection.astro';
+import OptionalSections from './OptionalSections.astro';
+import Footer from './Footer.astro';
+
+interface Props {
+  entry: CollectionEntry<'cv'>;
+  locale: Locale;
+}
+
+const { entry, locale } = Astro.props;
+const { data } = entry;
+const ui = getUi(locale);
+
+const navSections: ReadonlyArray<{ readonly id: SectionId; readonly label: string }> = [
+  { id: 'summary', label: ui.sections.summary },
+  { id: 'experience', label: ui.sections.experience },
+  { id: 'projects', label: ui.sections.projects },
+  { id: 'skills', label: ui.sections.skills },
+  { id: 'education', label: ui.sections.education },
+  { id: 'languages', label: ui.sections.languages },
+];
+
+const projectTags = toSkillTags(
+  Array.from(new Set(data.projects.flatMap((project) => project.tags))),
+);
+---
+
+<BaseLayout entry={entry} locale={locale}>
+  <UtilityBar locale={locale} sections={[...navSections]} />
+
+  <main id="main-content" class="cv-main">
+    <div class="container">
+      <Header profile={data.profile} locale={locale} />
+
+      <section id="summary" class="cv-section" aria-labelledby="heading-summary">
+        <div class="cv-section-header">
+          <h2 id="heading-summary" class="cv-section-title">{ui.sections.summary}</h2>
+        </div>
+        <p class="prose">{data.summary}</p>
+      </section>
+
+      <ExperienceSection items={data.experience} locale={locale} />
+      <ProjectsSection items={data.projects} locale={locale} />
+      <SkillsSection groups={data.skills} projectTags={projectTags} locale={locale} />
+      <EducationSection items={data.education} locale={locale} />
+      <LanguagesSection items={data.languages} locale={locale} />
+      <OptionalSections data={data} locale={locale} />
+    </div>
+  </main>
+
+  <Footer locale={locale} lastUpdated={data.lastUpdated} />
+</BaseLayout>

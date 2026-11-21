@@ -1,0 +1,19 @@
+---
+import { getEntry } from 'astro:content';
+import CvPage from '../../components/CvPage.astro';
+import { DEFAULT_LOCALE, LOCALES, type Locale } from '../../i18n/config';
+
+export function getStaticPaths() {
+  return LOCALES.filter((locale) => locale !== DEFAULT_LOCALE).map((locale) => ({
+    params: { locale },
+  }));
+}
+
+const locale = Astro.params.locale as Locale;
+const entry = await getEntry('cv', locale);
+if (!entry) {
+  throw new Error(`Missing CV content entry for locale "${locale}".`);
+}
+---
+
+<CvPage entry={entry} locale={locale} />

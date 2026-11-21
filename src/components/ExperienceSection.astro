@@ -1,0 +1,131 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { isNonEmpty, match } from '../domain/adt.ts';
+import {
+  classifyReference,
+  employmentStartDate,
+  toEmploymentSpan,
+  toOrganizationTitle,
+} from '../domain/cv.ts';
+import type { Locale } from '../i18n/config';
+import { getUi } from '../i18n/utils';
+
+interface Props {
+  items: CollectionEntry<'cv'>['data']['experience'];
+  locale: Locale;
+}
+
+const { items, locale } = Astro.props;
+const ui = getUi(locale);
+---
+
+<section id="experience" class="cv-section" aria-labelledby="heading-experience">
+  <div class="cv-section-header">
+    <h2 id="heading-experience" class="cv-section-title">{ui.sections.experience}</h2>
+  </div>
+
+  <div class="cv-entries">
+    {
+      items.map((item) => {
+        const span = toEmploymentSpan(item);
+        const startDate = employmentStartDate(span);
+        const orgTitle = toOrganizationTitle(item.organization, item.organizationUrl);
+
+        return (
+          <article class="cv-entry">
+            <div class="cv-entry-meta">
+              <time class="cv-entry-period" datetime={startDate}>
+                {span.display}
+              </time>
+              {item.location && <span class="cv-entry-location">{item.location}</span>}
+            </div>
+
+            <div class="cv-entry-body">
+              <h3 class="cv-entry-title">
+                {match(orgTitle, {
+                  Plain: ({ name }) => name,
+                  Linked: ({ name, url }) => (
+                    <a
+                      class="inline-link"
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {name}
+                    </a>
+                  ),
+                })}
+              </h3>
+              <p class="cv-entry-subtitle">{item.role}</p>
+
+              {isNonEmpty(item.highlights) && (
+                <ul class="cv-bullets">
+                  {item.highlights.map((bullet) => (
+                    <li>{bullet}</li>
+                  ))}
+                </ul>
+              )}
+
+              {isNonEmpty(item.references) && (
+                <ul class="reference-list">
+                  {item.references.map((ref) => {
+                    const display = classifyReference(ref.label, ref.url);
+                    return (
+                      <li>
+                        <span class="ref-prefix">{ui.labels.reference}:</span>{' '}
+                        <a
+                          class="inline-link"
+                          href={display.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {display.label}
+                        </a>
+                        {match(display, {
+                          SelfDescribing: () => null,
+                          WithPrintUrl: ({ url }) => (
+                            <>
+                              {' '}
+                              <span class="print-url print-only">({url})</span>
+                            </>
+                          ),
+                        })}
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+
+              {isNonEmpty(item.tags) && (
+                <ul class="tag-list" aria-label="Technologies">
+                  {item.tags.map((tag) => (
+                    <li class="tag">{tag}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </article>
+        );
+      })
+    }
+  </div>
+</section>
+
+<style>
+  .reference-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    margin-block-start: var(--space-3);
+    padding-inline-start: var(--space-3);
+    border-inline-start: 2px solid var(--border-hairline);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+  }
+
+  .ref-prefix {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+  }
+</style>

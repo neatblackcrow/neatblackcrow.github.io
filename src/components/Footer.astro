@@ -1,0 +1,74 @@
+---
+import { LOCALE_META, type Locale } from '../i18n/config';
+import { formatLastUpdated, getAbsoluteUrl, getLocalizedPath, getUi } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+  lastUpdated: string;
+}
+
+const { locale, lastUpdated } = Astro.props;
+const ui = getUi(locale);
+const meta = LOCALE_META[locale];
+const canonicalUrl = getAbsoluteUrl(Astro.site, getLocalizedPath(locale));
+const formattedDate = formatLastUpdated(lastUpdated, locale);
+---
+
+<footer class="cv-footer">
+  <div class="container footer-inner">
+    <p class="footer-meta">
+      <span>{ui.labels.builtWith}</span>
+      <span aria-hidden="true">·</span>
+      <span>
+        {ui.labels.lastUpdated}:{' '}
+        <time class="tabular-nums" datetime={lastUpdated}>
+          {formattedDate}
+        </time>
+      </span>
+    </p>
+
+    <p class="footer-links">
+      <a class="inline-link no-print" href={meta.pdfPath} download={meta.pdfFilename}>
+        {meta.pdfFilename}
+      </a>
+      <span class="no-print" aria-hidden="true">·</span>
+      <a class="inline-link" href={canonicalUrl}>
+        {canonicalUrl.replace(/^https?:\/\//, '')}
+      </a>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .cv-footer {
+    border-block-start: 1px solid var(--border-hairline);
+    padding-block: var(--space-5);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2) var(--space-4);
+  }
+
+  .footer-meta,
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  @media print {
+    .cv-footer {
+      margin-block-start: 1rem;
+      padding-block: 0.65rem 0;
+      font-size: 7.75pt;
+    }
+  }
+</style>

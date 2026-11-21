@@ -1,0 +1,30 @@
+{
+  "name": "neatblackcrow-github-io",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "test": "node --test tests/domain.test.ts",
+    "check": "astro check",
+    "build": "astro build",
+    "build:pdf": "node scripts/generate-pdf.mjs",
+    "build:og": "node scripts/generate-og.mjs",
+    "build:all": "npm test && npm run check && npm run build && npm run build:pdf",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.6",
+    "@astrojs/solid-js": "^7.1.6",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@fontsource/ibm-plex-sans": "^5.3.0",
+    "@fontsource/ibm-plex-sans-thai": "^5.3.0",
+    "astro": "^7.4.13",
+    "solid-js": "^1.9.20"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "playwright": "^1.65.1",
+    "typescript": "^6.0.3"
+  }
+}

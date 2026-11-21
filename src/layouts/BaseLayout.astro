@@ -1,0 +1,72 @@
+---
+import '@fontsource/ibm-plex-sans/latin-400.css';
+import '@fontsource/ibm-plex-sans/latin-500.css';
+import '@fontsource/ibm-plex-sans/latin-600.css';
+import '@fontsource/ibm-plex-sans/latin-700.css';
+import '@fontsource/ibm-plex-sans-thai/thai-400.css';
+import '@fontsource/ibm-plex-sans-thai/thai-500.css';
+import '@fontsource/ibm-plex-sans-thai/thai-600.css';
+import '@fontsource/ibm-plex-sans-thai/thai-700.css';
+import '@fontsource/ibm-plex-mono/latin-400.css';
+import '@fontsource/ibm-plex-mono/latin-500.css';
+
+import '../styles/reset.css';
+import '../styles/tokens.css';
+import '../styles/global.css';
+import '../styles/print.css';
+
+import type { CollectionEntry } from 'astro:content';
+import { LOCALE_META, type Locale } from '../i18n/config';
+import { getUi } from '../i18n/utils';
+import SeoHead from '../components/SeoHead.astro';
+
+interface Props {
+  entry: CollectionEntry<'cv'>;
+  locale: Locale;
+}
+
+const { entry, locale } = Astro.props;
+const meta = LOCALE_META[locale];
+const ui = getUi(locale);
+---
+
+<!doctype html>
+<html lang={meta.htmlLang} dir={meta.dir}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      (function () {
+        var key = 'cv-theme';
+        var theme = null;
+        try {
+          theme = localStorage.getItem(key);
+        } catch (e) {
+          theme = null;
+        }
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+    <noscript>
+      <style>
+        .csr-only {
+          display: none !important;
+        }
+      </style>
+    </noscript>
+    <SeoHead entry={entry} locale={locale} />
+  </head>
+  <body>
+    <a class="skip-link no-print" href="#main-content">{ui.skipToContent}</a>
+    <slot />
+    <script>
+      import '../scripts/theme';
+      import '../scripts/copy';
+      import '../scripts/scroll-spy';
+      import '../scripts/print';
+    </script>
+  </body>
+</html>

@@ -1,0 +1,172 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { isNonEmpty } from '../domain/adt.ts';
+import { asProjectId, stripUrlSchemeAndTrailingSlash } from '../domain/cv.ts';
+import { toSkillTags, type FilterableProject } from '../domain/filter.ts';
+import type { Locale } from '../i18n/config';
+import { getUi } from '../i18n/utils';
+import ProjectSkillFilter from '../islands/ProjectSkillFilter';
+
+interface Props {
+  items: CollectionEntry<'cv'>['data']['projects'];
+  locale: Locale;
+}
+
+const { items, locale } = Astro.props;
+const ui = getUi(locale);
+
+const filterableProjects: readonly FilterableProject[] = items.map((item) => ({
+  id: asProjectId(item.id),
+  name: item.name,
+  tags: toSkillTags(item.tags),
+  searchText: [item.name, item.summary, ...item.highlights, ...item.tags]
+    .join(' ')
+    .toLowerCase(),
+}));
+
+const uniqueTags = toSkillTags(
+  Array.from(new Set(items.flatMap((item) => item.tags))),
+);
+---
+
+<section id="projects" class="cv-section" aria-labelledby="heading-projects">
+  <div class="cv-section-header">
+    <h2 id="heading-projects" class="cv-section-title">{ui.sections.projects}</h2>
+  </div>
+
+  <div class="csr-only no-print">
+    <ProjectSkillFilter
+      client:idle
+      projects={filterableProjects}
+      tags={uniqueTags}
+      strings={ui.filter}
+    />
+  </div>
+
+  <div class="cv-entries" data-projects-list>
+    {
+      items.map((project) => (
+        <article
+          class="cv-entry"
+          data-project-card
+          data-project-id={project.id}
+        >
+          <div class="cv-entry-meta">
+            {isNonEmpty(project.tags) && (
+              <p class="project-meta-stack">{project.tags.join(' · ')}</p>
+            )}
+            {project.repository && (
+              <a
+                class="project-meta-link inline-link"
+                href={project.repository}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {ui.labels.repository}
+              </a>
+            )}
+          </div>
+
+          <div class="cv-entry-body">
+            <h3 class="cv-entry-title">{project.name}</h3>
+            <p class="project-summary">{project.summary}</p>
+
+            {isNonEmpty(project.highlights) && (
+              <ul class="cv-bullets">
+                {project.highlights.map((bullet) => (
+                  <li>{bullet}</li>
+                ))}
+              </ul>
+            )}
+
+            {(project.repository || project.liveUrl || isNonEmpty(project.links)) && (
+              <p class="project-links">
+                {project.repository && (
+                  <span class="project-link-item">
+                    <a
+                      class="inline-link"
+                      href={project.repository}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {stripUrlSchemeAndTrailingSlash(project.repository)}
+                    </a>
+                  </span>
+                )}
+                {project.liveUrl && (
+                  <span class="project-link-item">
+                    <a
+                      class="inline-link"
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {ui.labels.liveDemo}
+                    </a>{' '}
+                    <span class="print-url print-only">({project.liveUrl})</span>
+                  </span>
+                )}
+                {project.links.map((extra) => (
+                  <span class="project-link-item">
+                    <a
+                      class="inline-link"
+                      href={extra.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {extra.label}
+                    </a>{' '}
+                    <span class="print-url print-only">({extra.url})</span>
+                  </span>
+                ))}
+              </p>
+            )}
+
+            {isNonEmpty(project.tags) && (
+              <ul class="tag-list">
+                {project.tags.map((tag) => (
+                  <li class="tag">{tag}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .project-meta-stack {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    line-height: var(--leading-snug);
+  }
+
+  .project-meta-link {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    inline-size: fit-content;
+  }
+
+  .project-summary {
+    margin-block-start: var(--space-2);
+    color: var(--text-secondary);
+  }
+
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-block-start: var(--space-3);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+  }
+
+  @media (min-width: 768px) {
+    .project-meta-link {
+      display: none;
+    }
+  }
+</style>

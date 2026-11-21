@@ -1,0 +1,241 @@
+locale: en
+lastUpdated: "2026-11-21"
+
+seo:
+  title: "Voravut Nateluercha — Software Engineer & Systems Support Specialist | CV"
+  description: "Curriculum vitae of Voravut Nateluercha — Software Engineer, Systems & Site Reliability Officer, and Application Support Specialist based in Nonthaburi, Thailand."
+
+profile:
+  name: "Voravut Nateluercha"
+  headline: "Software Engineer & Systems / Application Support Specialist"
+  location: "Pak Kret, Nonthaburi, Thailand"
+  # Optional: uncomment to display full street address on the page
+  # streetAddress: "53/126 Village 9, Soi 27, Chaengwattana Rd., Pak Kret, Nonthaburi 11120"
+  email: "first20211@outlook.com"
+  phone: "+66 80-606-6523"
+  phoneHref: "tel:+66806066523"
+  githubUrl: "https://github.com/neatblackcrow"
+  githubHandle: "github.com/neatblackcrow"
+  shellCommand: "cat cv.en.yaml"
+  shellHost: "neatblackcrow.github.io"
+
+summary: >-
+  Computer Science graduate (Second-Class Honours, Kasetsart University) with cross-disciplinary experience spanning full-stack web engineering, Oracle Database administration, Linux/Docker site reliability, and enterprise application support. Proven track record operating mission-critical public-sector and fintech production systems—including meeting strict 15-minute SLAs for Java/Oracle workflows, hardening containerized statistical infrastructure, and troubleshooting live eKYC and Insurance POS integrations.
+
+experience:
+  - id: "appman"
+    organization: "AppMan Co., Ltd."
+    role: "Application Support Analyst"
+    period: "Dec 2023 – Apr 2025"
+    startDate: "2023-12"
+    endDate: "2025-04"
+    location: "Bangkok, Thailand"
+    highlights:
+      - "Diagnosed and resolved production incidents and known defects across live enterprise eKYC and Insurance Point-of-Sale (POS) platforms."
+      - "Served as technical liaison between internal engineering teams and external client teams throughout eKYC system integrations."
+    tags:
+      - "eKYC"
+      - "Insurance POS"
+      - "Production Support"
+      - "Client Integration"
+
+  - id: "oag"
+    organization: "Office of the Attorney General"
+    role: "IT Support & Equipment Procurement Officer"
+    period: "Aug 2023 – Dec 2023"
+    startDate: "2023-08"
+    endDate: "2023-12"
+    location: "Thailand"
+    highlights:
+      - "Provided frontline IT technical support and coordinated hardware and equipment procurement workflows for agency operations."
+    tags:
+      - "IT Support"
+      - "Hardware Procurement"
+
+  - id: "nso"
+    organization: "National Statistical Office (NSO)"
+    role: "Site Reliability Officer"
+    period: "Jan 2023 – Jul 2023"
+    startDate: "2023-01"
+    endDate: "2023-07"
+    location: "Bangkok, Thailand"
+    highlights:
+      - "Hardened Linux server environments and configured Docker container infrastructure for national statistical web services."
+      - "Maintained, configured, and upgraded SIS-CC .Stat Suite and Fusion Metadata Registry stacks using Docker Compose."
+      - "Developed Python-based web server load monitoring integrated with automated LINE notifications for proactive alerting."
+    references:
+      - label: "stathub.nso.go.th (SIS-CC .Stat Suite)"
+        url: "https://stathub.nso.go.th"
+      - label: "sdmx.nso.go.th (Fusion Metadata Registry)"
+        url: "https://sdmx.nso.go.th"
+      - label: "sdmx-test.nso.go.th"
+        url: "https://sdmx-test.nso.go.th"
+      - label: "SIS-CC Project"
+        url: "https://siscc.org/"
+      - label: "Regnology Fusion Metadata Registry"
+        url: "https://www.regnology.net/en/"
+    tags:
+      - "Linux"
+      - "Docker"
+      - "Docker Compose"
+      - "Python"
+      - "SDMX / SIS-CC"
+
+  - id: "glo"
+    organization: "Government Lottery Office (GLO)"
+    role: "Programmer & Database Administrator (DBA)"
+    period: "Feb 2017 – Feb 2020"
+    startDate: "2017-02"
+    endDate: "2020-02"
+    location: "Nonthaburi, Thailand"
+    highlights:
+      - "Maintained and enhanced internal web applications built primarily with PHP and CodeIgniter."
+      - "Provided on-call production support for Java desktop client applications backed by Oracle Database during prize-claiming operations, adhering to a strict 15-minute end-to-end SLA."
+      - "Monitored scheduled Oracle Database instance backup processes to safeguard operational continuity and data recovery."
+      - "Developed an internal prize-recording web application using ASP.NET."
+    tags:
+      - "PHP"
+      - "CodeIgniter"
+      - "Java"
+      - "Oracle Database"
+      - "ASP.NET"
+
+  - id: "nus-sesame"
+    organization: "SeSaMe Research Centre, National University of Singapore (NUS)"
+    role: "Web Developer Intern"
+    period: "Jul 2015 – Dec 2015"
+    startDate: "2015-07"
+    endDate: "2015-12"
+    location: "Singapore"
+    highlights:
+      - "Developed front-end user interfaces for the SENSE research web application using AngularJS 1.0, TypeScript, UI-Router state-machine routing, and Angular Material."
+      - "Managed front-end dependencies via Node.js/npm and automated build workflows with Gulp alongside CSS and JavaScript integration refinements."
+      - "Extended back-end functionality within an existing Play Framework service."
+    tags:
+      - "AngularJS 1.0"
+      - "TypeScript"
+      - "Node.js / npm"
+      - "Gulp"
+      - "Play Framework"
+
+projects:
+  - id: "clear-weather"
+    name: "Clear Weather"
+    summary: "Cross-platform weather application built with Flutter using a structured BLoC/Cubit state architecture."
+    highlights:
+      - "Implemented self-rehydrating Cubits so persisted application state restores cleanly across restarts."
+    tags:
+      - "Dart"
+      - "Flutter"
+      - "BLoC"
+      - "Cubit"
+    repository: "https://github.com/neatblackcrow/clear-weather"
+
+  - id: "nextjs-practice"
+    name: "NextJS Pure CSS GUI"
+    summary: "Front-end UI engineering exploration implementing complex responsive layouts and interactive interface components in Next.js using pure CSS without component libraries."
+    highlights:
+      - "Focused on custom CSS layout architecture and component styling inside a React/Next.js codebase."
+    tags:
+      - "React"
+      - "Next.js"
+      - "TypeScript"
+      - "CSS"
+    repository: "https://github.com/neatblackcrow/NextJS-practice"
+
+  - id: "robotz"
+    name: "Robotz Language Interpreter"
+    summary: "Individual Automata course project demonstrating formal language grammars through a custom domain-specific script interpreter and Java Swing visualization."
+    highlights:
+      - "Validates syntax and grammar errors prior to execution, then interprets instructions line by line with animated robot movement that halts upon obstacle collision."
+    tags:
+      - "Java"
+      - "Swing GUI"
+      - "Automata"
+      - "Interpreter"
+    repository: "https://github.com/neatblackcrow/robotz"
+
+  - id: "linux-cpu-hotplugger"
+    name: "Linux CPU Hotplugger"
+    summary: "Lightweight desktop GUI utility for Linux users to toggle CPU cores online or offline in order to extend laptop battery life."
+    highlights:
+      - "Provides direct graphical control over Linux CPU hotplugging without manual sysfs shell commands."
+    tags:
+      - "Linux"
+      - "GUI"
+      - "Power Management"
+    repository: "https://github.com/neatblackcrow/Linux-CPU-Hotplugger"
+
+  - id: "myirc"
+    name: "MyIRC (formerly MSNClone)"
+    summary: "Individual Computer Networking course project comprising a multithreaded TCP chat server and desktop clients built with a custom application-layer protocol."
+    highlights:
+      - "Implemented both server concurrency and Java Swing client UI from scratch over TCP sockets, including multi-user group chat support."
+    tags:
+      - "Java"
+      - "Swing GUI"
+      - "TCP"
+      - "Networking"
+    repository: "https://github.com/neatblackcrow/MSNClone"
+
+skills:
+  - category: "Programming Languages"
+    items:
+      - "Java"
+      - "JavaScript"
+      - "TypeScript"
+      - "Python"
+      - "Bash"
+      - "PHP"
+      - "Dart"
+      - "Rust"
+
+  - category: "Frameworks & Libraries"
+    items:
+      - "React / Redux"
+      - "Next.js"
+      - "Laravel"
+      - "CodeIgniter"
+      - "ASP.NET"
+      - "Play Framework"
+      - "Axum"
+      - "SQLx"
+      - "Flutter"
+      - "Swing GUI (Java)"
+      - "jQuery"
+
+  - category: "Databases (DBMS)"
+    items:
+      - "Oracle"
+      - "MySQL (MariaDB)"
+      - "MongoDB"
+      - "Firestore"
+
+  - category: "Containers & Version Control"
+    items:
+      - "Docker"
+      - "Docker Compose"
+      - "Git"
+
+  - category: "Operating Systems"
+    items:
+      - "Linux (Ubuntu, Red Hat / RHEL, Arch-based)"
+      - "macOS"
+      - "Windows"
+
+education:
+  - institution: "Kasetsart University, Bang Khen"
+    degree: "B.S. in Computer Science"
+    period: "Jun 2012 – May 2016"
+    startDate: "2012-06"
+    endDate: "2016-05"
+    location: "Bangkok, Thailand"
+    honors: "Second-Class Honours"
+    gpa: "3.33"
+
+languages:
+  - name: "English"
+    proficiency: "Professional Proficiency"
+    credentials: "TOEIC 935 · IELTS 6.5"
+  - name: "Thai"
+    proficiency: "Native"

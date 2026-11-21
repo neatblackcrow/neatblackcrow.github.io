@@ -1,0 +1,242 @@
+locale: th
+lastUpdated: "2026-11-21"
+
+seo:
+  title: "Voravut Nateluercha — วิศวกรซอฟต์แวร์ และผู้เชี่ยวชาญด้านระบบและสนับสนุนแอปพลิเคชัน | CV"
+  description: "เรซูเม่ของ Voravut Nateluercha — วิศวกรซอฟต์แวร์ ผู้ดูแลความเสถียรของระบบ (Site Reliability) และผู้เชี่ยวชาญด้าน Application Support ประสบการณ์ด้านเว็บ ฐานข้อมูล Oracle และ Linux/Docker"
+
+profile:
+  # Keep Latin spelling accurate; add Thai legal spelling here if desired.
+  name: "Voravut Nateluercha"
+  headline: "วิศวกรซอฟต์แวร์ และผู้เชี่ยวชาญด้านระบบและสนับสนุนแอปพลิเคชัน"
+  location: "ปากเกร็ด, นนทบุรี, ประเทศไทย"
+  # ตัวเลือกเพิ่มเติม: ลบเครื่องหมาย # หากต้องการแสดงที่อยู่เต็มบนหน้าเว็บ
+  # streetAddress: "53/126 หมู่ 9 ซอย 27 ถนนแจ้งวัฒนะ อ.ปากเกร็ด จ.นนทบุรี 11120"
+  email: "first20211@outlook.com"
+  phone: "080-606-6523"
+  phoneHref: "tel:+66806066523"
+  githubUrl: "https://github.com/neatblackcrow"
+  githubHandle: "github.com/neatblackcrow"
+  shellCommand: "cat cv.th.yaml"
+  shellHost: "neatblackcrow.github.io"
+
+summary: >-
+  บัณฑิตวิทยาการคอมพิวเตอร์ (เกียรตินิยมอันดับสอง มหาวิทยาลัยเกษตรศาสตร์) มีประสบการณ์ครอบคลุมทั้งการพัฒนาเว็บแอปพลิเคชัน การบริหารจัดการฐานข้อมูล Oracle การดูแลเสถียรภาพระบบ Linux/Docker และการสนับสนุนระบบงานระดับองค์กร มีประวัติการทำงานร่วมกับระบบสำคัญของภาครัฐและฟินเทค ทั้งการแก้ไขปัญหาเร่งด่วนภายใต้ SLA 15 นาที การดูแลระบบสถิติแบบคอนเทนเนอร์ และการสนับสนุนการเชื่อมต่อระบบ eKYC และ Insurance POS
+
+experience:
+  - id: "appman"
+    organization: "บริษัท แอพแมน จำกัด (AppMan Co., Ltd.)"
+    role: "Application Support Analyst"
+    period: "ธ.ค. 2023 – เม.ย. 2025"
+    startDate: "2023-12"
+    endDate: "2025-04"
+    location: "กรุงเทพมหานคร, ประเทศไทย"
+    highlights:
+      - "วิเคราะห์และแก้ไขปัญหาที่ทราบสาเหตุ (Known Issues) รวมถึงเหตุขัดข้องในระบบจริง (Production) สำหรับระบบยืนยันตัวตนอิเล็กทรอนิกส์ (eKYC) และระบบขายประกันภัย (Insurance Point-of-Sale)"
+      - "เป็นตัวกลางประสานงานด้านเทคนิคระหว่างทีมนักพัฒนาซอฟต์แวร์และทีมฝั่งลูกค้าตลอดกระบวนการเชื่อมต่อระบบ eKYC"
+    tags:
+      - "eKYC"
+      - "Insurance POS"
+      - "Production Support"
+      - "Integration Liaison"
+
+  - id: "oag"
+    organization: "สำนักงานอัยการสูงสุด"
+    role: "เจ้าหน้าที่สนับสนุนด้านไอที และจัดหาครุภัณฑ์"
+    period: "ส.ค. 2023 – ธ.ค. 2023"
+    startDate: "2023-08"
+    endDate: "2023-12"
+    location: "ประเทศไทย"
+    highlights:
+      - "ให้บริการสนับสนุนทางเทคนิคด้านเทคโนโลยีสารสนเทศ และประสานงานด้านการจัดหาครุภัณฑ์และอุปกรณ์คอมพิวเตอร์ของหน่วยงาน"
+    tags:
+      - "IT Support"
+      - "จัดหาครุภัณฑ์"
+
+  - id: "nso"
+    organization: "สำนักงานสถิติแห่งชาติ (NSO)"
+    role: "Site Reliability Officer"
+    period: "ม.ค. 2023 – ก.ค. 2023"
+    startDate: "2023-01"
+    endDate: "2023-07"
+    location: "กรุงเทพมหานคร, ประเทศไทย"
+    highlights:
+      - "กำหนดค่า Docker และเสริมความมั่นคงปลอดภัยให้กับเซิร์ฟเวอร์ระบบปฏิบัติการ Linux"
+      - "ดูแล ปรับแต่ง และอัปเดตระบบ SIS-CC .Stat Suite และ Fusion Metadata Registry ให้ทันสมัยผ่าน Docker Compose"
+      - "พัฒนาระบบเฝ้าระวังภาระการทำงานของเว็บเซิร์ฟเวอร์ด้วย Python พร้อมแจ้งเตือนอัตโนมัติผ่าน LINE"
+    references:
+      - label: "stathub.nso.go.th (SIS-CC .Stat Suite)"
+        url: "https://stathub.nso.go.th"
+      - label: "sdmx.nso.go.th (Fusion Metadata Registry)"
+        url: "https://sdmx.nso.go.th"
+      - label: "sdmx-test.nso.go.th"
+        url: "https://sdmx-test.nso.go.th"
+      - label: "SIS-CC Project"
+        url: "https://siscc.org/"
+      - label: "Regnology Fusion Metadata Registry"
+        url: "https://www.regnology.net/en/"
+    tags:
+      - "Linux"
+      - "Docker"
+      - "Docker Compose"
+      - "Python"
+      - "SDMX / SIS-CC"
+
+  - id: "glo"
+    organization: "สำนักงานสลากกินแบ่งรัฐบาล (GLO)"
+    role: "โปรแกรมเมอร์ และผู้ดูแลฐานข้อมูล (Programmer, DBA)"
+    period: "ก.พ. 2017 – ก.พ. 2020"
+    startDate: "2017-02"
+    endDate: "2020-02"
+    location: "นนทบุรี, ประเทศไทย"
+    highlights:
+      - "ดูแลและบำรุงรักษาเว็บแอปพลิเคชันภายในองค์กร (ส่วนใหญ่พัฒนาด้วย PHP และเฟรมเวิร์ก CodeIgniter)"
+      - "สแตนด์บายแก้ไขข้อผิดพลาดให้ผู้ใช้งานระหว่างกระบวนการขึ้นเงินรางวัลบนแอปพลิเคชัน Java ที่เชื่อมต่อกับฐานข้อมูล Oracle ภายใต้ SLA ที่ต้องดำเนินการให้เสร็จสิ้นภายใน 15 นาที"
+      - "เฝ้าติดตามการทำงานของกระบวนการสำรองข้อมูล (Backup) บน Oracle Database"
+      - "พัฒนาเว็บแอปพลิเคชันสำหรับบันทึกข้อมูลการขึ้นเงินรางวัลด้วย ASP.NET"
+    tags:
+      - "PHP"
+      - "CodeIgniter"
+      - "Java"
+      - "Oracle Database"
+      - "ASP.NET"
+
+  - id: "nus-sesame"
+    organization: "ศูนย์วิจัย SeSaMe, มหาวิทยาลัยแห่งชาติสิงคโปร์ (NUS)"
+    role: "Web Developer Intern (นักศึกษาฝึกงานพัฒนาเว็บ)"
+    period: "ก.ค. 2015 – ธ.ค. 2015"
+    startDate: "2015-07"
+    endDate: "2015-12"
+    location: "สิงคโปร์"
+    highlights:
+      - "พัฒนาส่วนติดต่อผู้ใช้ (UI) สำหรับเว็บแอปพลิเคชัน SENSE ด้วย AngularJS 1.0, TypeScript, UI-Router (จัดการสถานะแบบ State Machine) และ Angular Material"
+      - "จัดการแพ็กเกจด้วย Node.js/npm และทำระบบอัตโนมัติด้วย Gulp พร้อมปรับแต่ง CSS และ JavaScript เดิมเพื่อการเชื่อมต่อที่สมบูรณ์"
+      - "พัฒนาต่อยอดระบบฝั่งเซิร์ฟเวอร์ (Backend) ที่พัฒนาไว้เดิมด้วย Play Framework"
+    tags:
+      - "AngularJS 1.0"
+      - "TypeScript"
+      - "Node.js / npm"
+      - "Gulp"
+      - "Play Framework"
+
+projects:
+  - id: "clear-weather"
+    name: "Clear Weather"
+    summary: "แอปพลิเคชันพยากรณ์อากาศพัฒนาด้วย Flutter โดยจัดโครงสร้างสถาปัตยกรรม BLoC ร่วมกับ Cubit"
+    highlights:
+      - "ออกแบบ Cubit ให้สามารถบันทึกและกู้คืนสถานะของแอปพลิเคชัน (Rehydrate State) ได้อัตโนมัติ"
+    tags:
+      - "Dart"
+      - "Flutter"
+      - "BLoC"
+      - "Cubit"
+    repository: "https://github.com/neatblackcrow/clear-weather"
+
+  - id: "nextjs-practice"
+    name: "NextJS Pure CSS GUI"
+    summary: "โปรเจกต์ฝึกฝนการสร้างส่วนติดต่อผู้ใช้ (GUI) ที่มีความซับซ้อนใน Next.js ด้วย Pure CSS โดยไม่พึ่งพาเฟรมเวิร์ก UI"
+    highlights:
+      - "เน้นการวางโครงสร้างเลย์เอาต์และจัดแต่งสไตล์ด้วย CSS ล้วนภายในโครงสร้างแอป Next.js/React"
+    tags:
+      - "React"
+      - "Next.js"
+      - "TypeScript"
+      - "CSS"
+    repository: "https://github.com/neatblackcrow/NextJS-practice"
+
+  - id: "robotz"
+    name: "Robotz Language Interpreter"
+    summary: "โครงงานรายวิชา Automata สำหรับพิสูจน์แนวคิดไวยากรณ์ภาษารูปนัย (Formal Language Grammars) พัฒนาด้วย Java และ Swing GUI แบบกำหนดเอง"
+    highlights:
+      - "ตรวจสอบข้อผิดพลาดของสคริปต์ก่อนเริ่มประมวลผลแบบทีละบรรทัด พร้อมแสดงแอนิเมชันหุ่นยนต์ซึ่งจะหยุดทำงานทันทีเมื่อชนสิ่งกีดขวาง"
+    tags:
+      - "Java"
+      - "Swing GUI"
+      - "Automata"
+      - "Interpreter"
+    repository: "https://github.com/neatblackcrow/robotz"
+
+  - id: "linux-cpu-hotplugger"
+    name: "Linux CPU Hotplugger"
+    summary: "เครื่องมือ GUI น้ำหนักเบาสำหรับผู้ใช้งาน Linux เพื่อเปิด/ปิดคอร์ CPU แบบเรียลไทม์ ช่วยยืดอายุการใช้งานแบตเตอรี่"
+    highlights:
+      - "ช่วยให้จัดการการเปิด-ปิดคอร์ CPU บน Linux ได้สะดวกผ่านหน้าต่างกราฟิก"
+    tags:
+      - "Linux"
+      - "GUI"
+      - "Power Management"
+    repository: "https://github.com/neatblackcrow/Linux-CPU-Hotplugger"
+
+  - id: "myirc"
+    name: "MyIRC (เดิมชื่อ MSNClone)"
+    summary: "โครงงานรายวิชาเครือข่ายคอมพิวเตอร์ ประกอบด้วยเซิร์ฟเวอร์แบบ Multithreaded และไคลเอนต์เดสก์ท็อปที่สื่อสารผ่านโปรโตคอลระดับแอปพลิเคชันที่ออกแบบเองบน TCP"
+    highlights:
+      - "พัฒนาทั้งฝั่งเซิร์ฟเวอร์และไคลเอนต์ด้วย Java Swing พร้อมรองรับฟีเจอร์ห้องสนทนากลุ่ม (Group Chat)"
+    tags:
+      - "Java"
+      - "Swing GUI"
+      - "TCP"
+      - "Networking"
+    repository: "https://github.com/neatblackcrow/MSNClone"
+
+skills:
+  - category: "ภาษาโปรแกรม (Programming Languages)"
+    items:
+      - "Java"
+      - "JavaScript"
+      - "TypeScript"
+      - "Python"
+      - "Bash"
+      - "PHP"
+      - "Dart"
+      - "Rust"
+
+  - category: "เฟรมเวิร์กและไลบรารี (Frameworks & Libraries)"
+    items:
+      - "React / Redux"
+      - "Next.js"
+      - "Laravel"
+      - "CodeIgniter"
+      - "ASP.NET"
+      - "Play Framework"
+      - "Axum"
+      - "SQLx"
+      - "Flutter"
+      - "Swing GUI (Java)"
+      - "jQuery"
+
+  - category: "ระบบจัดการฐานข้อมูล (DBMS)"
+    items:
+      - "Oracle"
+      - "MySQL (MariaDB)"
+      - "MongoDB"
+      - "Firestore"
+
+  - category: "คอนเทนเนอร์และระบบควบคุมเวอร์ชัน"
+    items:
+      - "Docker"
+      - "Docker Compose"
+      - "Git"
+
+  - category: "ระบบปฏิบัติการ (Operating Systems)"
+    items:
+      - "Linux (Ubuntu, Red Hat / RHEL, Arch-based)"
+      - "macOS"
+      - "Windows"
+
+education:
+  - institution: "มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตบางเขน"
+    degree: "วิทยาศาสตรบัณฑิต (วท.บ.) สาขาวิทยาการคอมพิวเตอร์"
+    period: "มิ.ย. 2012 – พ.ค. 2016"
+    startDate: "2012-06"
+    endDate: "2016-05"
+    location: "กรุงเทพมหานคร, ประเทศไทย"
+    honors: "เกียรตินิยมอันดับสอง"
+    gpa: "3.33"
+
+languages:
+  - name: "ภาษาอังกฤษ (English)"
+    proficiency: "ระดับดีเยี่ยมในการทำงาน (Professional Proficiency)"
+    credentials: "TOEIC 935 · IELTS 6.5"
+  - name: "ภาษาไทย (Thai)"
+    proficiency: "เจ้าของภาษา (Native)"

@@ -1,0 +1,104 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { match } from '../domain/adt.ts';
+import type { SkillTag } from '../domain/cv.ts';
+import { resolveSkillChip } from '../domain/filter.ts';
+import type { Locale } from '../i18n/config';
+import { getUi } from '../i18n/utils';
+
+interface Props {
+  groups: CollectionEntry<'cv'>['data']['skills'];
+  projectTags: readonly SkillTag[];
+  locale: Locale;
+}
+
+const { groups, projectTags, locale } = Astro.props;
+const ui = getUi(locale);
+---
+
+<section id="skills" class="cv-section" aria-labelledby="heading-skills">
+  <div class="cv-section-header">
+    <h2 id="heading-skills" class="cv-section-title">{ui.sections.skills}</h2>
+    <span class="cv-section-note csr-only no-print">{ui.labels.skillFilterHint}</span>
+  </div>
+
+  <div class="skills-grid">
+    {
+      groups.map((group) => (
+        <div class="cv-entry skill-group">
+          <div class="cv-entry-meta">
+            <h3 class="skill-category">{group.category}</h3>
+          </div>
+
+          <div class="cv-entry-body">
+            <ul class="tag-list skill-tag-list">
+              {group.items.map((item) => {
+                const binding = resolveSkillChip(item, projectTags);
+                return (
+                  <li>
+                    {match(binding, {
+                      Static: ({ label }) => <span class="tag">{label}</span>,
+                      Filterable: ({ label, targetTag }) => (
+                        <span
+                          class="tag skill-chip-linkable"
+                          data-skill-tag={targetTag}
+                        >
+                          {label}
+                        </span>
+                      ),
+                    })}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .skills-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .skill-category {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: var(--leading-snug);
+  }
+
+  .skill-tag-list {
+    margin-block-start: 0;
+  }
+
+  @media screen {
+    :global([data-skills-enhanced='true']) .skill-chip-linkable {
+      cursor: pointer;
+      border-block-end-color: var(--border-strong);
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-decoration-color: var(--border-strong);
+      text-underline-offset: 0.2em;
+      transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+    }
+
+    :global([data-skills-enhanced='true']) .skill-chip-linkable:hover,
+    :global([data-skills-enhanced='true']) .skill-chip-linkable[aria-pressed='true'] {
+      border-color: var(--accent-primary);
+      background-color: var(--accent-subtle);
+      color: var(--accent-text);
+      text-decoration-color: var(--accent-primary);
+    }
+  }
+
+  @media print {
+    .skill-chip-linkable {
+      text-decoration: none !important;
+    }
+  }
+</style>

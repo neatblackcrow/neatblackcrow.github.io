@@ -1,0 +1,12 @@
+---
+import { getEntry } from 'astro:content';
+import CvPage from '../components/CvPage.astro';
+import { DEFAULT_LOCALE } from '../i18n/config';
+
+const entry = await getEntry('cv', DEFAULT_LOCALE);
+if (!entry) {
+  throw new Error(`Missing CV content entry for default locale "${DEFAULT_LOCALE}".`);
+}
+---
+
+<CvPage entry={entry} locale={DEFAULT_LOCALE} />

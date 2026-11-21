@@ -1,0 +1,63 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { collectOptionalSections } from '../domain/cv.ts';
+import type { Locale } from '../i18n/config';
+import { getUi } from '../i18n/utils';
+
+type CvData = CollectionEntry<'cv'>['data'];
+
+interface Props {
+  data: CvData;
+  locale: Locale;
+}
+
+const { data, locale } = Astro.props;
+const ui = getUi(locale);
+
+const optionalGroups = collectOptionalSections([
+  { id: 'certifications', title: ui.sections.certifications, items: data.certifications },
+  { id: 'publications', title: ui.sections.publications, items: data.publications },
+  { id: 'talks', title: ui.sections.talks, items: data.talks },
+  { id: 'open-source', title: ui.sections.openSource, items: data.openSource },
+]);
+---
+
+{
+  optionalGroups.map(({ id, title, items }) => (
+    <section id={id} class="cv-section" aria-labelledby={`heading-${id}`}>
+      <div class="cv-section-header">
+        <h2 id={`heading-${id}`} class="cv-section-title">
+          {title}
+        </h2>
+      </div>
+
+      <div class="cv-entries">
+        {items.map((item) => (
+          <article class="cv-entry">
+            <div class="cv-entry-meta">
+              {item.period && <span class="cv-entry-period">{item.period}</span>}
+            </div>
+            <div class="cv-entry-body">
+              <h3 class="cv-entry-title">
+                {item.url ? (
+                  <a
+                    class="inline-link"
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {item.title}
+                  </a>
+                ) : (
+                  item.title
+                )}
+              </h3>
+              {item.subtitle && <p class="cv-entry-subtitle">{item.subtitle}</p>}
+              {item.summary && <p class="prose">{item.summary}</p>}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  ))
+}

@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Astro generated files
+.astro/
+
+# Logs
+npm-debug.log*
+*.log
+
+# Environment variables
+.env
+.env.*
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+
+# Ignore agent files
+agents/
