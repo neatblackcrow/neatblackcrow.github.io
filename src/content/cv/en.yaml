@@ -1,5 +1,5 @@
 locale: en
-lastUpdated: "2026-11-21"
+lastUpdated: "2026-11-25"
 
 seo:
   title: "Voravut Nateluercha — Software Engineer & Systems Support Specialist | CV"
@@ -119,6 +119,46 @@ experience:
       - "Play Framework"
 
 projects:
+  - id: "quest-driven-cat-simulator"
+    name: "Quest-Driven Cat Simulator"
+    summary: "Cross-platform productivity application and isometric virtual cat simulator for Android and Flutter Web built with Flutter, Flame Engine, Riverpod 3, and on-device LiteRT-LM AI—gamifying hierarchical task scheduling into a Mana-driven autonomous pet simulation with zero cloud AI dependencies."
+    highlights:
+      - "Engineered local-first on-device LLM inference via flutter_edge_ai and LiteRT-LM (bundled Gemma 3 1B IT on Android; token-free Gemma 4 E2B IT WebGPU streamed through a Cloudflare Worker CORS proxy into reload-safe atomic browser OPFS storage on Web) with a single shared model weight instance, bounded 4-turn per-cat KV sessions, FIFO turn queuing, and deterministic heuristic fallbacks."
+      - "Built discrete isometric Flame rooms (Living Room, Bedroom, Bathroom) with 2-layer enclosure depth sorting, doorway-routed multi-cat pathfinding, a 4-stat simulation engine (Hunger, Hygiene, Happiness, Energy with an 8+ hour biological sleep cycle), SQLite v9 + background worker isolate on Android, and localStorage persistence on Web."
+      - "Applied Dart 3 sealed-class ADTs, exhaustive pattern matching, and zero-cost extension-type constraints across a continuous multi-day 24-hour timeline supporting 5-minute-snapped drag/resize, cascading non-overlapping schedule validation, idempotent Mana rewards, and Time Effectiveness analytics."
+    tags:
+      - "Dart"
+      - "Flutter"
+      - "Flame"
+      - "Riverpod"
+      - "LiteRT-LM"
+      - "WebGPU"
+      - "SQLite"
+      - "Cloudflare Workers"
+    liveUrl: "https://cat-simulator.fieldfirst2012.workers.dev"
+
+  - id: "solar-planner"
+    name: "SolarPlanner"
+    summary: "Full-stack Agile project management and day-planning web application replacing linear Kanban boards with interactive, zoomable D3.js Sunburst diagrams across Goals, Backlog, Sprint, and Burndown views."
+    highlights:
+      - "Built a functional TypeScript/React + Vite frontend (Redux Toolkit, ts-pattern exhaustive matching, react-hook-form + Zod) featuring memoized D3.js partition layouts, drill-down zooming with a bottom-right satellite mini-map, ghosted parent hierarchy in Sprint view, and SVG-to-HTML drag-and-drop onto a 24-hour continuous Day Planner timeline."
+      - "Engineered a high-performance Go backend (Gin, GORM, embedded SQLite) using explicit reflection-free request validation, JWT/session authentication, relational Task/Sprint/TimeAllocation models, and Go table-driven + httptest integration tests alongside Jest/RTL frontend tests."
+    tags:
+      - "Go"
+      - "Gin"
+      - "GORM"
+      - "SQLite"
+      - "React"
+      - "TypeScript"
+      - "D3.js"
+      - "Redux Toolkit"
+      - "Zod"
+      - "ts-pattern"
+    liveUrl: "https://freegce.ddns.net/solar-planner-demo"
+    demoCredentials:
+      username: "test-user-6jKpUKCR"
+      password: "Kd=9fSjMw9vL4Mzfq("
+
   - id: "clear-weather"
     name: "Clear Weather"
     summary: "Cross-platform weather application built with Flutter using a structured BLoC/Cubit state architecture."
@@ -184,6 +224,7 @@ skills:
       - "Java"
       - "JavaScript"
       - "TypeScript"
+      - "Go"
       - "Python"
       - "Bash"
       - "PHP"
@@ -194,6 +235,10 @@ skills:
     items:
       - "React / Redux"
       - "Next.js"
+      - "Gin"
+      - "GORM"
+      - "D3.js"
+      - "Zod"
       - "Laravel"
       - "CodeIgniter"
       - "ASP.NET"
@@ -201,6 +246,9 @@ skills:
       - "Axum"
       - "SQLx"
       - "Flutter"
+      - "Flame"
+      - "Riverpod"
+      - "LiteRT-LM"
       - "Swing GUI (Java)"
       - "jQuery"
 
@@ -208,13 +256,15 @@ skills:
     items:
       - "Oracle"
       - "MySQL (MariaDB)"
+      - "SQLite"
       - "MongoDB"
       - "Firestore"
 
-  - category: "Containers & Version Control"
+  - category: "Containers, Edge & Version Control"
     items:
       - "Docker"
       - "Docker Compose"
+      - "Cloudflare Workers"
       - "Git"
 
   - category: "Operating Systems"

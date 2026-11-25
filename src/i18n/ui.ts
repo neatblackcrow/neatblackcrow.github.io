@@ -35,6 +35,9 @@ export interface UiStrings {
     readonly website: string;
     readonly repository: string;
     readonly liveDemo: string;
+    readonly demoAccount: string;
+    readonly demoUsername: string;
+    readonly demoPassword: string;
     readonly reference: string;
     readonly gpa: string;
     readonly lastUpdated: string;
@@ -90,6 +93,9 @@ export const UI: Record<Locale, UiStrings> = {
       website: 'Website',
       repository: 'Repository',
       liveDemo: 'Live',
+      demoAccount: 'Demo account',
+      demoUsername: 'User',
+      demoPassword: 'Pass',
       reference: 'Reference',
       gpa: 'GPA',
       lastUpdated: 'Updated',
@@ -143,6 +149,9 @@ export const UI: Record<Locale, UiStrings> = {
       website: 'เว็บไซต์',
       repository: 'ซอร์สโค้ด',
       liveDemo: 'เว็บไซต์ใช้งานจริง',
+      demoAccount: 'บัญชีทดลองใช้งาน',
+      demoUsername: 'ผู้ใช้',
+      demoPassword: 'รหัสผ่าน',
       reference: 'อ้างอิง',
       gpa: 'เกรดเฉลี่ย',
       lastUpdated: 'อัปเดตล่าสุด',

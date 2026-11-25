@@ -29,6 +29,12 @@ const projectSchema = z.object({
   tags: z.array(z.string().min(1)).default([]),
   repository: z.url().optional(),
   liveUrl: z.url().optional(),
+  demoCredentials: z
+    .object({
+      username: z.string().min(1),
+      password: z.string().min(1),
+    })
+    .optional(),
   links: z.array(linkSchema).default([]),
 });
 

@@ -1,5 +1,5 @@
 locale: th
-lastUpdated: "2026-11-21"
+lastUpdated: "2026-11-25"
 
 seo:
   title: "Voravut Nateluercha — วิศวกรซอฟต์แวร์ และผู้เชี่ยวชาญด้านระบบและสนับสนุนแอปพลิเคชัน | CV"
@@ -120,6 +120,46 @@ experience:
       - "Play Framework"
 
 projects:
+  - id: "quest-driven-cat-simulator"
+    name: "Quest-Driven Cat Simulator"
+    summary: "แอปพลิเคชันจัดการงานและเกมจำลองเลี้ยงแมวแบบไอโซเมตริกสำหรับ Android และ Flutter Web พัฒนาด้วย Flutter, Flame Engine, Riverpod 3 และ AI บนอุปกรณ์ผ่าน LiteRT-LM โดยแปลงการทำงานตามตารางให้เป็นรางวัล Mana เพื่อดูแลแมวอัตโนมัติโดยไม่ต้องพึ่งพา Cloud AI"
+    highlights:
+      - "ออกแบบระบบประมวลผล LLM บนอุปกรณ์ด้วย flutter_edge_ai และ LiteRT-LM (Gemma 3 1B IT แบบฝังบน Android และ Gemma 4 E2B IT บน WebGPU ที่สตรีมผ่าน Cloudflare Worker CORS Proxy ลงพื้นที่เก็บข้อมูล OPFS แบบปลอดภัยต่อการรีโหลด) โดยใช้โมเดลร่วมกันชุดเดียว แยกเซสชันแชตรายตัวแบบหมุนเวียนทุก 4 รอบ พร้อมคิว FIFO และระบบ Heuristic สำรอง"
+      - "พัฒนาฉากห้องไอโซเมตริกด้วย Flame (ห้องนั่งเล่น ห้องนอน ห้องน้ำ) รองรับการซ้อนเลเยอร์วัตถุ 2 ชั้น การเดินข้ามห้องผ่านประตูของแมวหลายตัวพร้อมกัน ระบบจำลอง 4 ค่าสถานะ (ความหิว ความสะอาด ความสุข และพลังงานพร้อมวงจรการนอนมากกว่า 8 ชั่วโมง) รวมถึงการเก็บข้อมูลด้วย SQLite v9 + Background Isolate บน Android และ localStorage บน Web"
+      - "ใช้ Dart 3 Sealed Class ADTs, Exhaustive Pattern Matching และ Zero-Cost Extension Types ควบคุมความถูกต้องของไทม์ไลน์ 24 ชั่วโมงแบบต่อเนื่องหลายวัน รองรับการลาก/ปรับขนาดงานทีละ 5 นาที การเลื่อนตารางอัตโนมัติแบบไม่ทับซ้อน การให้ Mana แบบไม่ซ้ำ และรายงานสถิติ Time Effectiveness"
+    tags:
+      - "Dart"
+      - "Flutter"
+      - "Flame"
+      - "Riverpod"
+      - "LiteRT-LM"
+      - "WebGPU"
+      - "SQLite"
+      - "Cloudflare Workers"
+    liveUrl: "https://cat-simulator.fieldfirst2012.workers.dev"
+
+  - id: "solar-planner"
+    name: "SolarPlanner"
+    summary: "เว็บแอปพลิเคชันบริหารจัดการโปรเจกต์แบบ Agile และวางแผนรายวันแบบ Full-Stack ที่แทนที่บอร์ด Kanban ด้วยแผนภาพ D3.js Sunburst แบบซูมได้ ครอบคลุมมุมมอง Goals, Backlog, Sprint และ Burndown"
+    highlights:
+      - "พัฒนาฝั่ง Frontend ด้วย React + TypeScript + Vite ในแนวทาง Functional Programming (Redux Toolkit, ts-pattern, react-hook-form + Zod) พร้อมเลย์เอาต์ D3.js Sunburst ที่ทำ Memoize รองรับการซูมเจาะลึกคู่กับแผนที่ย่อมุมขวาล่าง การแสดงโหนดแม่แบบโปร่งในมุมมอง Sprint และการลากวางจาก SVG ลงไทม์ไลน์วางแผนรายวัน 24 ชั่วโมง"
+      - "พัฒนาฝั่ง Backend ด้วย Go (Gin, GORM, SQLite) โดยเน้นประสิทธิภาพสูงผ่านการตรวจสอบข้อมูลแบบ Raw Validation โดยไม่ใช้ Reflection พร้อมระบบยืนยันตัวตน JWT/Session โครงสร้างฐานข้อมูลเชิงสัมพันธ์สำหรับ Task/Sprint/TimeAllocation และชุดทดสอบแบบ Table-Driven + httptest ควบคู่กับ Jest/RTL"
+    tags:
+      - "Go"
+      - "Gin"
+      - "GORM"
+      - "SQLite"
+      - "React"
+      - "TypeScript"
+      - "D3.js"
+      - "Redux Toolkit"
+      - "Zod"
+      - "ts-pattern"
+    liveUrl: "https://freegce.ddns.net/solar-planner-demo"
+    demoCredentials:
+      username: "test-user-6jKpUKCR"
+      password: "Kd=9fSjMw9vL4Mzfq("
+
   - id: "clear-weather"
     name: "Clear Weather"
     summary: "แอปพลิเคชันพยากรณ์อากาศพัฒนาด้วย Flutter โดยจัดโครงสร้างสถาปัตยกรรม BLoC ร่วมกับ Cubit"
@@ -185,6 +225,7 @@ skills:
       - "Java"
       - "JavaScript"
       - "TypeScript"
+      - "Go"
       - "Python"
       - "Bash"
       - "PHP"
@@ -195,6 +236,10 @@ skills:
     items:
       - "React / Redux"
       - "Next.js"
+      - "Gin"
+      - "GORM"
+      - "D3.js"
+      - "Zod"
       - "Laravel"
       - "CodeIgniter"
       - "ASP.NET"
@@ -202,6 +247,9 @@ skills:
       - "Axum"
       - "SQLx"
       - "Flutter"
+      - "Flame"
+      - "Riverpod"
+      - "LiteRT-LM"
       - "Swing GUI (Java)"
       - "jQuery"
 
@@ -209,13 +257,15 @@ skills:
     items:
       - "Oracle"
       - "MySQL (MariaDB)"
+      - "SQLite"
       - "MongoDB"
       - "Firestore"
 
-  - category: "คอนเทนเนอร์และระบบควบคุมเวอร์ชัน"
+  - category: "คอนเทนเนอร์ เอดจ์ และระบบควบคุมเวอร์ชัน"
     items:
       - "Docker"
       - "Docker Compose"
+      - "Cloudflare Workers"
       - "Git"
 
   - category: "ระบบปฏิบัติการ (Operating Systems)"
