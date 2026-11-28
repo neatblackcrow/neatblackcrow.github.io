@@ -1,6 +1,6 @@
 @page {
   size: A4;
-  margin: 11mm 13mm;
+  margin: 8.5mm 11mm;
 }
 
 @media print {
@@ -30,13 +30,13 @@
   body {
     background-color: #ffffff !important;
     color: #0f1115 !important;
-    font-size: 9.5pt !important;
-    line-height: 1.45 !important;
+    font-size: 8.75pt !important;
+    line-height: 1.38 !important;
     min-block-size: auto !important;
   }
 
   html[lang='th'] body {
-    line-height: 1.52 !important;
+    line-height: 1.44 !important;
   }
 
   .no-print,
@@ -67,25 +67,39 @@
     padding-block-end: 0 !important;
   }
 
+  .prose,
+  .cv-entry-body {
+    max-inline-size: none !important;
+  }
+
   .cv-section {
-    margin-block-start: 1rem !important;
-    padding-block-start: 0.75rem !important;
+    margin-block-start: 0.65rem !important;
+    padding-block-start: 0.48rem !important;
     scroll-margin-top: 0 !important;
   }
 
   .cv-section-header {
-    margin-block-end: 0.65rem !important;
+    margin-block-end: 0.4rem !important;
   }
 
   .cv-entries {
-    gap: 0.85rem !important;
+    gap: 0.52rem !important;
   }
 
   .cv-entry {
-    grid-template-columns: 11.2rem minmax(0, 1fr) !important;
-    gap: 1rem !important;
+    grid-template-columns: 10.5rem minmax(0, 1fr) !important;
+    gap: 0.85rem !important;
     break-inside: avoid;
     page-break-inside: avoid;
+  }
+
+  .cv-bullets {
+    gap: 0.18rem !important;
+    margin-block-start: 0.25rem !important;
+  }
+
+  .skills-grid {
+    gap: 0.35rem !important;
   }
 
   h1,
@@ -96,12 +110,16 @@
   }
 
   .cv-entry-title {
-    font-size: 10.5pt !important;
+    font-size: 9.75pt !important;
   }
 
   .tag-list {
-    margin-block-start: 0.4rem !important;
-    gap: 0.25rem !important;
+    margin-block-start: 0.25rem !important;
+    gap: 0.2rem !important;
+  }
+
+  .skill-tag-list {
+    margin-block-start: 0 !important;
   }
 
   .tag {
